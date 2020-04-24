@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.sumanta.mvvm.R
+import com.sumanta.mvvm.data.db.entities.User
 import com.sumanta.mvvm.databinding.ActivityLoginBinding
 import com.sumanta.mvvm.util.hide
 import com.sumanta.mvvm.util.show
@@ -30,11 +31,9 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         progress_bar.show()
     }
 
-    override fun onSuccess(loginResponse: LiveData<String>) {
-        loginResponse.observe(this, Observer {
-            progress_bar.hide()
-            toast(it)
-        })
+    override fun onSuccess(user: User) {
+        progress_bar.hide()
+        toast("${user.name} Is Logged In")
     }
 
     override fun onFailure(message: String) {
