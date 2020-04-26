@@ -12,6 +12,7 @@ import com.sumanta.mvvm.data.db.entities.User
 import com.sumanta.mvvm.databinding.ActivityLoginBinding
 import com.sumanta.mvvm.util.hide
 import com.sumanta.mvvm.util.show
+import com.sumanta.mvvm.util.snackbar
 import com.sumanta.mvvm.util.toast
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -21,7 +22,8 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         super.onCreate(savedInstanceState)
         val binding: ActivityLoginBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_login)
-        val viewModel = ViewModelProviders.of(this).get(AuthViewModel::class.java)
+        val viewModel = ViewModelProviders.of(this)
+            .get(AuthViewModel::class.java)
         binding.viewmodel = viewModel
 
         viewModel.authListener= this
@@ -38,6 +40,6 @@ class LoginActivity : AppCompatActivity(), AuthListener {
 
     override fun onFailure(message: String) {
         progress_bar.hide()
-        toast(message)
+        root_layout.snackbar(message)
     }
 }
