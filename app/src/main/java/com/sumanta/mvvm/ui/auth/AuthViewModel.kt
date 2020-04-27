@@ -6,12 +6,17 @@ import com.sumanta.mvvm.data.repository.UserRepository
 import com.sumanta.mvvm.util.ApiException
 import com.sumanta.mvvm.util.Coroutines
 
-class AuthViewModel : ViewModel() {
+class AuthViewModel(
+    private val repository: UserRepository
+) : ViewModel() {
 
     var email: String? = null
     var password: String? = null
 
     var authListener: AuthListener? = null
+
+    fun getLoggedInUser() = repository.getUser()
+
 
     fun onLoginButtonClick(view: View) {
         authListener?.onStarted()
@@ -23,10 +28,11 @@ class AuthViewModel : ViewModel() {
 
         Coroutines.main {
             try {
-                val authResponse = UserRepository().userLogin(email!!, password!!)
+                val authResponse = repository.userLogin(email!!, password!!)
 
                 authResponse.user?.let {
                     authListener?.onSuccess(it)
+                    repository.saveUser(it)
                     return@main
                 }
 
