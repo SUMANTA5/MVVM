@@ -12,6 +12,7 @@ import com.sumanta.mvvm.R
 import com.sumanta.mvvm.data.db.AppDatabase
 import com.sumanta.mvvm.data.db.entities.User
 import com.sumanta.mvvm.data.network.MyApi
+import com.sumanta.mvvm.data.network.NetworkConnectionInterceptor
 import com.sumanta.mvvm.data.repository.UserRepository
 import com.sumanta.mvvm.databinding.ActivityLoginBinding
 import com.sumanta.mvvm.ui.home.HomeActivity
@@ -26,7 +27,9 @@ class LoginActivity : AppCompatActivity(), AuthListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val api = MyApi()
+
+        val networkConnectionInterceptor = NetworkConnectionInterceptor(this)
+        val api = MyApi(networkConnectionInterceptor)
         val db = AppDatabase(this)
         val repository = UserRepository(api,db)
         val factory = AuthViewModelFactory(repository)

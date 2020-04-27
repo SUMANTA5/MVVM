@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.sumanta.mvvm.data.repository.UserRepository
 import com.sumanta.mvvm.util.ApiException
 import com.sumanta.mvvm.util.Coroutines
+import com.sumanta.mvvm.util.NoInternetException
 
 class AuthViewModel(
     private val repository: UserRepository
@@ -38,6 +39,8 @@ class AuthViewModel(
 
                 authListener?.onFailure(authResponse.message!!)
             }catch (e: ApiException){
+                authListener?.onFailure(e.message!!)
+            }catch (e: NoInternetException){
                 authListener?.onFailure(e.message!!)
             }
         }
