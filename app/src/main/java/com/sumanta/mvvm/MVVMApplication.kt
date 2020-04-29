@@ -6,6 +6,7 @@ import com.sumanta.mvvm.data.network.MyApi
 import com.sumanta.mvvm.data.network.NetworkConnectionInterceptor
 import com.sumanta.mvvm.data.repository.UserRepository
 import com.sumanta.mvvm.ui.auth.AuthViewModelFactory
+import com.sumanta.mvvm.ui.home.profile.ProfileViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -24,6 +25,9 @@ class MVVMApplication : Application(), KodeinAware {
         bind() from singleton { AppDatabase(instance()) }
         bind() from singleton { UserRepository(instance(), instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
+        bind() from provider { ProfileViewModelFactory(instance()) }
+
+
     }
 
 }

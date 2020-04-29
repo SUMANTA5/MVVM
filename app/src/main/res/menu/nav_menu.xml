@@ -4,6 +4,6 @@
         android:id="@+id/home"
         android:title="@string/home" />
     <item
-        android:id="@+id/profile"
+        android:id="@+id/profileFragment"
         android:title="@string/profile" />
 </menu>
