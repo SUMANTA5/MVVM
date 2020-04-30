@@ -1,7 +1,7 @@
 package com.sumanta.mvvm.ui.home.profile
 
 import androidx.lifecycle.ViewModel
-import com.sumanta.mvvm.data.repository.UserRepository
+import com.sumanta.mvvm.data.repositories.UserRepository
 
 class ProfileViewModel(
     repository: UserRepository

@@ -1,6 +1,6 @@
 package com.sumanta.mvvm.data.network
 
-import com.sumanta.mvvm.data.network.responses.AuthResponse
+
 import com.sumanta.mvvm.util.ApiException
 import org.json.JSONException
 import org.json.JSONObject

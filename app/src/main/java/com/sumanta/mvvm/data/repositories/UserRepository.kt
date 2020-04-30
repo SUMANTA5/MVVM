@@ -1,4 +1,4 @@
-package com.sumanta.mvvm.data.repository
+package com.sumanta.mvvm.data.repositories
 
 
 import com.sumanta.mvvm.data.db.AppDatabase

@@ -3,7 +3,7 @@ package com.sumanta.mvvm.ui.auth
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
-import com.sumanta.mvvm.data.repository.UserRepository
+import com.sumanta.mvvm.data.repositories.UserRepository
 import com.sumanta.mvvm.util.ApiException
 import com.sumanta.mvvm.util.Coroutines
 import com.sumanta.mvvm.util.NoInternetException
